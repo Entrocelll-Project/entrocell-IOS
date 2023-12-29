@@ -114,7 +114,7 @@ packages:
     source: hosted
     version: "5.4.0"
   equatable:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: equatable
       sha256: c2b87cb7756efdf69892005af546c56c0b5037f54d2a88269b4f347a505e3ca2
@@ -151,7 +151,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_bloc:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_bloc
       sha256: e74efb89ee6945bcbce74a5b3a5a3376b088e5f21f55c263fc38cbdc6237faae
@@ -201,7 +201,7 @@ packages:
     source: hosted
     version: "4.0.2"
   kartal:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: kartal
       sha256: c8994796778098590742619d4de4b2f976b9156fd0cb48c31977e096bd3ff11f
