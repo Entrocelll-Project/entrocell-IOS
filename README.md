@@ -2,11 +2,13 @@
 
 A new Flutter project.
 
-#![](/assets/screenshot/login.png)
-#![](/assets/screenshot/register_1.png)
-#![](/assets/screenshot/register_2.png)
-#![](/assets/screenshot/home.png)
-#![](/assets/screenshot/profile.png)
-#![](/assets/screenshot/stats.png)
-#![](/assets/screenshot/phone.png)
-#![](/assets/screenshot/gift.png)
+
+
+<img src="/assets/screenshot/login.png" height="500">
+<img src="/assets/screenshot/register_1.png" height="500">
+<img src="/assets/screenshot/register_2.png" height="500">
+<img src="/assets/screenshot/home.png" height="500">
+<img src="/assets/screenshot/profile.png" height="500">
+<img src="/assets/screenshot/stats.png" height="500">
+<img src="/assets/screenshot/phone.png" height="500">
+<img src="/assets/screenshot/gift.png" height="500">
