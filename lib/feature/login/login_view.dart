@@ -5,11 +5,10 @@ import 'package:entrocell_app/product/constant/color_constant.dart';
 import 'package:entrocell_app/product/constant/string_constant.dart';
 import 'package:entrocell_app/product/enum/text_field_decoration_enum.dart';
 import 'package:entrocell_app/product/widget/button/general_button.dart';
-import 'package:entrocell_app/product/widget/card/logo_card.dart';
+import 'package:entrocell_app/product/widget/core/core_widgets.dart';
 import 'package:entrocell_app/product/widget/field/general_field.dart';
 import 'package:entrocell_app/product/widget/text/subtitle_text.dart';
 import 'package:entrocell_app/product/widget/text/title_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
@@ -40,7 +39,7 @@ class _LoginViewState extends State<LoginView> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const LogoCard(),
+            CoreWidgets.logo(),
             context.sized.emptySizedHeightBoxLow3x,
             _titleText(),
             context.sized.emptySizedHeightBoxLow3x,
@@ -50,32 +49,84 @@ class _LoginViewState extends State<LoginView> {
             context.sized.emptySizedHeightBoxNormal,
             _buttonsRow(context),
             context.sized.emptySizedHeightBoxNormal,
-            _lostPasswordButton(),
+            _lostPasswordButton(context),
           ],
         ),
       )),
     );
   }
 
-  Align _lostPasswordButton() {
+  Align _lostPasswordButton(BuildContext context) {
     return Align(
         alignment: Alignment.centerRight,
-        child: TextButton(onPressed: () {}, child: const SubtitleText(text: StringConstant.loginLostUrPassword)));
+        child: TextButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const TitleText(text: StringConstant.dialogForgotPasswordTitle),
+                  content: SizedBox(
+                    height: context.sized.dynamicHeight(.21),
+                    child: Column(
+                      children: [
+                        GeneralTextField(
+                            controller: widget.mailController, decoration: TextFieldDecorationEnum.mail.decoration),
+                        context.sized.emptySizedHeightBoxLow3x,
+                        GeneralTextField(
+                            controller: widget.phoneNumberController,
+                            decoration: TextFieldDecorationEnum.phoneNumber.decoration),
+                      ],
+                    ),
+                  ),
+                  actions: [
+                    GeneralButton(
+                      text: StringConstant.dialogForgotPasswordButtonTitle,
+                      onPressed: () async {
+                        await context.route.pop();
+                        // ignore: use_build_context_synchronously
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: const TitleText(text: StringConstant.dialogNewPasswordTitle),
+                            content: SizedBox(
+                              height: context.sized.dynamicHeight(.21),
+                              child: Column(children: [
+                                GeneralTextField(
+                                    controller: widget.passwordController,
+                                    decoration: TextFieldDecorationEnum.password.decoration),
+                                context.sized.emptySizedHeightBoxLow3x,
+                                GeneralTextField(
+                                    controller: widget.confirmPasswordController,
+                                    decoration: TextFieldDecorationEnum.confirmPassword.decoration),
+                              ]),
+                            ),
+                            actions: [
+                              GeneralButton(
+                                text: StringConstant.dialogNewPasswordButtonTitle,
+                                onPressed: () => context.route.navigateToPage(LoginView()),
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                    )
+                  ],
+                ),
+              );
+            },
+            child: const SubtitleText(
+              text: StringConstant.loginLostUrPassword,
+              color: ColorConstant.pink,
+            )));
   }
 
   Row _buttonsRow(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        GeneralButton(
-          text: StringConstant.loginSignUp,
-          page: RegisterView(),
-        ),
+        GeneralButton(text: StringConstant.loginSignUp, onPressed: () => context.route.navigateToPage(RegisterView())),
         context.sized.emptySizedWidthBoxLow3x,
-        const GeneralButton(
-          text: StringConstant.loginLogin,
-          page: HomeView(),
-        ),
+        GeneralButton(text: StringConstant.loginLogin, onPressed: () => context.route.navigateToPage(const HomeView())),
       ],
     );
   }
@@ -92,6 +143,4 @@ class _LoginViewState extends State<LoginView> {
       controller: widget.phoneNumberController, decoration: TextFieldDecorationEnum.phoneNumber.decoration);
 
   TitleText _titleText() => const TitleText(text: StringConstant.mainAppTitle);
-
-  Center _logo() => const Center(child: Card(shape: CircleBorder(), child: Icon(CupertinoIcons.bolt_fill, size: 100)));
 }

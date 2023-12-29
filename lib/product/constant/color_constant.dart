@@ -12,7 +12,7 @@ final class ColorConstant {
   static const Color linearGradyanThreeFist = Color(0xf51700ff);
   static const Color linearGradyanThreeLast = Color(0xFFff66c4);
   static const Color purpleLight = Color(0xFF9340FF);
-  static const Color purpleDark = Color(0xf2a0a4db);
+  static const Color purpleDark = Color.fromARGB(255, 24, 17, 58);
   static const Color pink = Color(0xffc519db);
   static const Color white = Colors.white;
   static const Color black = Colors.black;

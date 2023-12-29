@@ -13,7 +13,22 @@ final class StringConstant {
   static const loginLogin = 'Login';
   static const loginLostUrPassword = 'Lost your password ?';
 
+  // Home Page
+  static const homeExitButtonTitle = 'EXIT';
+
   // Register Page
+
+  // Package Page
+  static const packageDate = 'Date';
+  static const packageUsedTime = 'Used Time';
+  static const packagePackageName = 'Package Name';
+  static const packageTotalMinute = 'Total Minutes';
+  static const packageLeftMinutes = 'Left Minutes';
+
+  // Gift Page
+  static const giftOne = 'GIFT 1';
+  static const giftTwo = 'GIFT 2';
+  static const giftThree = 'GIFT 3';
 
   // Text Form Field Hint Texts
   static const formName = 'Name';
@@ -23,4 +38,10 @@ final class StringConstant {
   static const formPassword = 'Password';
   static const formConfirmPassword = 'Confirm Password';
   static const formBundlePackage = 'Bundle Package';
+
+  // Dialog Title
+  static const dialogForgotPasswordTitle = 'Please Correct Your Informations';
+  static const dialogForgotPasswordButtonTitle = 'Next';
+  static const dialogNewPasswordTitle = 'Please Enter A New Password';
+  static const dialogNewPasswordButtonTitle = 'Apply';
 }

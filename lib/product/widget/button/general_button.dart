@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
 class GeneralButton extends StatelessWidget {
-  const GeneralButton({super.key, required this.text, required this.page});
+  const GeneralButton({super.key, required this.text, required this.onPressed, this.icon});
   final String text;
-  final Widget page;
+  final void Function() onPressed;
+  final Icon? icon;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,6 +20,19 @@ class GeneralButton extends StatelessWidget {
             end: Alignment.centerRight,
           ),
         ),
-        child: TextButton(onPressed: () => context.route.navigateToPage(page), child: BoldText(text: text)));
+        child: TextButton(
+          onPressed: onPressed,
+          child: icon != null
+              ? SizedBox(
+                  width: context.sized.dynamicWidth(.3),
+                  child: Row(
+                    children: [
+                      BoldText(text: text),
+                      context.sized.emptySizedWidthBoxNormal,
+                      icon ?? const SizedBox.shrink(),
+                    ],
+                  ))
+              : BoldText(text: text),
+        ));
   }
 }
