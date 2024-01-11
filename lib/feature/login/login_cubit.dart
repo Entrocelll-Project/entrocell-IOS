@@ -19,6 +19,7 @@ final class LoginCubit extends Cubit<LoginState> {
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');
     if (response.statusCode == 201) {
+      // ignore: use_build_context_synchronously
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
           return const HomeView();

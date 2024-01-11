@@ -126,7 +126,6 @@ class _LoginViewState extends State<LoginView> {
       children: [
         GeneralButton(text: StringConstant.loginSignUp, onPressed: () => context.route.navigateToPage(RegisterView())),
         context.sized.emptySizedWidthBoxLow3x,
-        //GeneralButton(text: StringConstant.loginLogin, onPressed: () => context.route.navigateToPage(const HomeView())),
         GeneralButton(text: StringConstant.loginLogin, onPressed: () => context.read<LoginCubit>().loginMock(context)),
       ],
     );
