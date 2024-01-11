@@ -1,4 +1,4 @@
-import 'package:entrocell_app/feature/home/home_view.dart';
+import 'package:entrocell_app/feature/login/login_cubit.dart';
 import 'package:entrocell_app/feature/login/login_mixin.dart';
 import 'package:entrocell_app/feature/register/register_view.dart';
 import 'package:entrocell_app/product/constant/color_constant.dart';
@@ -10,6 +10,7 @@ import 'package:entrocell_app/product/widget/field/general_field.dart';
 import 'package:entrocell_app/product/widget/text/subtitle_text.dart';
 import 'package:entrocell_app/product/widget/text/title_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
 
 class LoginView extends StatefulWidget with LoginMixin {
@@ -39,9 +40,8 @@ class _LoginViewState extends State<LoginView> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            context.sized.emptySizedHeightBoxNormal,
             CoreWidgets.logo(),
-            context.sized.emptySizedHeightBoxLow3x,
-            _titleText(),
             context.sized.emptySizedHeightBoxLow3x,
             _phoneNumberField(),
             context.sized.emptySizedHeightBoxLow3x,
@@ -126,7 +126,8 @@ class _LoginViewState extends State<LoginView> {
       children: [
         GeneralButton(text: StringConstant.loginSignUp, onPressed: () => context.route.navigateToPage(RegisterView())),
         context.sized.emptySizedWidthBoxLow3x,
-        GeneralButton(text: StringConstant.loginLogin, onPressed: () => context.route.navigateToPage(const HomeView())),
+        //GeneralButton(text: StringConstant.loginLogin, onPressed: () => context.route.navigateToPage(const HomeView())),
+        GeneralButton(text: StringConstant.loginLogin, onPressed: () => context.read<LoginCubit>().loginMock(context)),
       ],
     );
   }
@@ -141,6 +142,4 @@ class _LoginViewState extends State<LoginView> {
 
   GeneralTextField _phoneNumberField() => GeneralTextField(
       controller: widget.phoneNumberController, decoration: TextFieldDecorationEnum.phoneNumber.decoration);
-
-  TitleText _titleText() => const TitleText(text: StringConstant.mainAppTitle);
 }

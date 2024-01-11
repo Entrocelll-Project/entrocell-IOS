@@ -6,7 +6,6 @@ import 'package:entrocell_app/product/enum/text_field_decoration_enum.dart';
 import 'package:entrocell_app/product/widget/button/general_button.dart';
 import 'package:entrocell_app/product/widget/core/core_widgets.dart';
 import 'package:entrocell_app/product/widget/field/general_field.dart';
-import 'package:entrocell_app/product/widget/text/title_text.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
@@ -43,8 +42,6 @@ class _RegisterViewState extends State<RegisterView> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CoreWidgets.logo(),
-                context.sized.emptySizedHeightBoxLow3x,
-                const TitleText(text: StringConstant.mainAppTitle),
                 context.sized.emptySizedHeightBoxLow3x,
                 GeneralTextField(
                     controller: widget.nameController, decoration: TextFieldDecorationEnum.name.decoration),

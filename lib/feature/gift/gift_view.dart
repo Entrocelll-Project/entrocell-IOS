@@ -21,9 +21,8 @@ class _GiftViewState extends State<GiftView> {
           child: Padding(
         padding: context.padding.normal + const EdgeInsets.only(top: 50),
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+          context.sized.emptySizedHeightBoxNormal,
           CoreWidgets.logo(),
-          context.sized.emptySizedHeightBoxLow3x,
-          CoreWidgets.title(),
           context.sized.emptySizedHeightBoxLow3x,
           const _GiftContainer(
             text: StringConstant.giftOne,

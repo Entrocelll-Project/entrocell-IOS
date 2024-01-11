@@ -24,8 +24,7 @@ class _StatsViewState extends State<StatsView> {
             height: context.sized.height,
             width: context.sized.width,
             child: Stack(children: [
-              Positioned(top: 0, left: 150, child: CoreWidgets.logo()),
-              Positioned(top: 120, left: 120, child: CoreWidgets.title()),
+              Positioned(top: 0, left: 30, child: CoreWidgets.logo()),
               const Positioned(top: 240, left: 35, child: BoldText(text: '%40')),
               const Positioned(top: 400, left: 35, child: BoldText(text: '%50')),
               const Positioned(top: 560, left: 35, child: BoldText(text: '%67')),

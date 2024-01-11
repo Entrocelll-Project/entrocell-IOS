@@ -30,9 +30,8 @@ class _HomeViewState extends State<HomeView> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              context.sized.emptySizedHeightBoxNormal,
               CoreWidgets.logo(),
-              context.sized.emptySizedHeightBoxLow3x,
-              CoreWidgets.title(),
               context.sized.emptySizedHeightBoxLow3x,
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 CardButton(icon: Icons.person, onTap: () => context.route.navigateToPage(const ProfileView())),
