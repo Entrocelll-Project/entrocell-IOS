@@ -34,6 +34,7 @@ class GeneralTextField extends StatelessWidget {
             ),
           ),
           child: TextFormField(
+            controller: controller,
             style: TextStyle(fontSize: FontSizeEnum.medium.size, color: ColorConstant.white),
             obscureText: isPassword ? state.obscureText : false,
             cursorColor: ColorConstant.black,

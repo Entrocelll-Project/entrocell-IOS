@@ -13,19 +13,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
 
-class LoginView extends StatefulWidget with LoginMixin {
-  LoginView({super.key});
+class LoginView extends StatefulWidget {
+  const LoginView({super.key});
 
   @override
   State<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _LoginViewState extends State<LoginView> with LoginMixin {
   @override
   void dispose() {
     super.dispose();
-    widget.passwordController.dispose();
-    widget.phoneNumberController.dispose();
+    passwordController.dispose();
+    phoneNumberController.dispose();
   }
 
   @override
@@ -70,10 +70,10 @@ class _LoginViewState extends State<LoginView> {
                     child: Column(
                       children: [
                         GeneralTextField(
-                            controller: widget.mailController, decoration: TextFieldDecorationEnum.mail.decoration),
+                            controller: mailController, decoration: TextFieldDecorationEnum.mail.decoration),
                         context.sized.emptySizedHeightBoxLow3x,
                         GeneralTextField(
-                            controller: widget.phoneNumberController,
+                            controller: phoneNumberController,
                             decoration: TextFieldDecorationEnum.phoneNumber.decoration),
                       ],
                     ),
@@ -92,18 +92,18 @@ class _LoginViewState extends State<LoginView> {
                               height: context.sized.dynamicHeight(.21),
                               child: Column(children: [
                                 GeneralTextField(
-                                    controller: widget.passwordController,
+                                    controller: passwordController,
                                     decoration: TextFieldDecorationEnum.password.decoration),
                                 context.sized.emptySizedHeightBoxLow3x,
                                 GeneralTextField(
-                                    controller: widget.confirmPasswordController,
+                                    controller: confirmPasswordController,
                                     decoration: TextFieldDecorationEnum.confirmPassword.decoration),
                               ]),
                             ),
                             actions: [
                               GeneralButton(
                                 text: StringConstant.dialogNewPasswordButtonTitle,
-                                onPressed: () => context.route.navigateToPage(LoginView()),
+                                onPressed: () => context.route.navigateToPage(const LoginView()),
                               )
                             ],
                           ),
@@ -126,19 +126,22 @@ class _LoginViewState extends State<LoginView> {
       children: [
         GeneralButton(text: StringConstant.loginSignUp, onPressed: () => context.route.navigateToPage(RegisterView())),
         context.sized.emptySizedWidthBoxLow3x,
-        GeneralButton(text: StringConstant.loginLogin, onPressed: () => context.read<LoginCubit>().loginMock(context)),
+        GeneralButton(
+            text: StringConstant.loginLogin,
+            onPressed: () =>
+                context.read<LoginCubit>().loginMock(context, phoneNumberController.text, passwordController.text)),
       ],
     );
   }
 
   GeneralTextField _passwordField() {
     return GeneralTextField(
-      controller: widget.passwordController,
+      controller: passwordController,
       decoration: TextFieldDecorationEnum.password.decoration,
       isPassword: true,
     );
   }
 
-  GeneralTextField _phoneNumberField() => GeneralTextField(
-      controller: widget.phoneNumberController, decoration: TextFieldDecorationEnum.phoneNumber.decoration);
+  GeneralTextField _phoneNumberField() =>
+      GeneralTextField(controller: phoneNumberController, decoration: TextFieldDecorationEnum.phoneNumber.decoration);
 }
